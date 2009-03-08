@@ -7,11 +7,11 @@ void setup(){
 }
 
 void loop(){
-	static int axis_angle = 0;
+	static int axis_angle_times_ten = 0;
 
 	Servo::refresh();
 
-	axis_angle += 1;
-	axis_angle %= 180;
-	axis.write(axis_angle);
+	axis_angle_times_ten += 1;
+	axis_angle_times_ten %= 1800;
+	axis.write(axis_angle_times_ten / 10);
 }
