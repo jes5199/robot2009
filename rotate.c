@@ -7,11 +7,23 @@ void setup(){
 }
 
 void loop(){
-	static int axis_angle_times_ten = 0;
+	static int axis_counter     = 0;
+	static int axis_counter_max = 10;
+	static int axis_angle       = 0;
+	static int axis_direction   = 1;
 
+	axis.write(axis_angle);
 	Servo::refresh();
 
-	axis_angle_times_ten += 1;
-	axis_angle_times_ten %= 1800;
-	axis.write(axis_angle_times_ten / 10);
+	axis_counter += 1;
+	if(axis_counter >= axis_counter_max){
+		axis_counter = 0;
+		axis_angle += axis_direction;
+		if(axis_angle >= 180){
+			axis_direction = -1;
+		}
+		if(axis_angle <= 0){
+			axis_direction = 1;
+		}
+	}
 }
