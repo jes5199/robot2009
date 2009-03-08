@@ -13,5 +13,5 @@ void loop(){
 
 	axis_angle += 1;
 	axis_angle %= 180;
-	axis.write(axis_angle)
+	axis.write(axis_angle);
 }
